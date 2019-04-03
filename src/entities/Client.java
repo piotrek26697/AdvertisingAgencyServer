@@ -16,6 +16,7 @@ public class Client implements Serializable
     private String name;
     private String lastName;
     private String address;
+    //TODO list of orders
 
     public int getId()
     {
