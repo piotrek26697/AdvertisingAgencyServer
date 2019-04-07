@@ -2,13 +2,15 @@ package EnterpriseJavaBeans;
 
 import entities.Client;
 
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+@Stateless
 public class ClientHandlingEJB
 {
     @PersistenceContext(name = "adAgencyPU")
-    EntityManager manager;
+    private EntityManager manager;
 
     public void create(Client client)
     {

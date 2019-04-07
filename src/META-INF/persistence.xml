@@ -3,16 +3,14 @@
              xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd">
     <persistence-unit name="adAgencyPU">
-        <class>entities.Client</class>
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <jta-data-source>MSSQLDS</jta-data-source>
 
         <properties>
             <!--<property name="hibernate.hbm2ddl.auto" value="create-drop" />-->
-            <!--<property name="hibernate.hbm2ddl.auto" value="update"/>-->
-            <property name="javax.persistence.jdbc.driver" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
-            <property name="javax.persistence.jdbc.url" value="jdbc:sqlserver://LUX\SQLEXPRESS:1433;DatabaseName=AdAgency"/>
-            <property name="javax.persistence.jdbc.user" value="adAgencyUser"/>
-            <property name="javax.persistence.jdbc.password" value="password"/>
             <property name="hibernate.dialect" value="org.hibernate.dialect.SQLServerDialect"/>
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
+            <property name="show_sql" value="true"/>
         </properties>
     </persistence-unit>
 </persistence>
