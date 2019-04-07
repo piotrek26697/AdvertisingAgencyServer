@@ -3,11 +3,13 @@ package entities;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
 
 @XmlRootElement
 @Entity
+@Table(name="Clients")
 public class Client implements Serializable
 {
     @Id
