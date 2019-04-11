@@ -32,7 +32,7 @@ public class ClientHandlingREST
         String params = "where name like '" + name + "%' and lastName like '" + lastName + "%' and address like '" + address + "%'";
         List<Client> list = bean.get(params);
         Clients clients = new Clients();
-        clients.setClientList(list);
+        clients.setClients(list);
         StringWriter writer = new StringWriter();
         JAXB.marshal(clients, writer);
         return writer.toString();

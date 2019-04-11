@@ -4,20 +4,21 @@ import entities.Client;
 
 import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 @XmlRootElement
 public class Clients implements Serializable
 {
-    List<Client> clientList;
+    List<Client> clients = new ArrayList<>();
 
-    public List<Client> getClientList()
+    public List<Client> getClients()
     {
-        return clientList;
+        return clients;
     }
 
-    public void setClientList(List<Client> clientList)
+    public void setClients(List<Client> clients)
     {
-        this.clientList = clientList;
+        this.clients = clients;
     }
 }
