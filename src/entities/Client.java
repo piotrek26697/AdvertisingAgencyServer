@@ -1,24 +1,27 @@
 package entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
+import java.util.List;
 
 @XmlRootElement
 @Entity
-@Table(name="Clients")
+@Table(name = "Clients")
 public class Client implements Serializable
 {
     @Id
     @GeneratedValue
     private int id;
+
     private String name;
+
     private String lastName;
+
     private String address;
-    //TODO list of orders
+
+    @OneToMany(mappedBy = "client")
+    private List<Advertisement> adsList;
 
     public int getId()
     {
@@ -58,5 +61,15 @@ public class Client implements Serializable
     public void setAddress(String address)
     {
         this.address = address;
+    }
+
+    public List<Advertisement> getAdsList()
+    {
+        return adsList;
+    }
+
+    public void setAdsList(List<Advertisement> adsList)
+    {
+        this.adsList = adsList;
     }
 }

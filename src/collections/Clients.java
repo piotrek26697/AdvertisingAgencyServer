@@ -10,7 +10,7 @@ import java.util.List;
 @XmlRootElement
 public class Clients implements Serializable
 {
-    List<Client> clients = new ArrayList<>();
+    private List<Client> clients = new ArrayList<>();
 
     public List<Client> getClients()
     {
