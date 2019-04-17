@@ -20,6 +20,7 @@ public class Client implements Serializable
 
     private String address;
 
+    @Transient
     @OneToMany(mappedBy = "client", fetch = FetchType.LAZY)
     private List<Advertisement> adsList;
 

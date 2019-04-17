@@ -5,7 +5,6 @@ import collections.Billboards;
 import collections.Invoices;
 import entities.Advertisement;
 import entities.Billboard;
-import entities.Client;
 import entities.Invoice;
 
 import javax.ejb.EJB;
@@ -59,7 +58,7 @@ public class AdvertisementHandlingREST
         return sw.toString();
     }
 
-    @GET
+    /*@GET
     @Path("/client")
     public String getClient(@QueryParam("advertisementID") int id)
     {
@@ -67,5 +66,5 @@ public class AdvertisementHandlingREST
         StringWriter sw = new StringWriter();
         JAXB.marshal(client, sw);
         return sw.toString();
-    }
+    }*/
 }

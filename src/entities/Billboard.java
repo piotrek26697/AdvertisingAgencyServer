@@ -15,6 +15,7 @@ public class Billboard
 
     private String address;
 
+    @Transient
     @ManyToMany(fetch=FetchType.LAZY)
     private List<Advertisement> advertisementDisplayed;
 

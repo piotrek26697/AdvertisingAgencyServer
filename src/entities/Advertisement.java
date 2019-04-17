@@ -14,19 +14,23 @@ public class Advertisement
     @GeneratedValue
     private int id;
 
+    private String description;
+
     private Calendar dateFrom;
 
     private Calendar dateTo;
 
     private double price;
 
-    @ManyToOne(fetch=FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER)
     private Client client;
 
-    @ManyToMany(fetch=FetchType.LAZY)
+    @Transient
+    @ManyToMany(fetch = FetchType.LAZY)
     private List<Invoice> invoiceList;
 
-    @ManyToMany(fetch=FetchType.LAZY)
+    @Transient
+    @ManyToMany(fetch = FetchType.LAZY)
     private List<Billboard> billboardList;
 
     public int getId()
@@ -97,5 +101,15 @@ public class Advertisement
     public void setBillboardList(List<Billboard> billboardList)
     {
         this.billboardList = billboardList;
+    }
+
+    public String getDescription()
+    {
+        return description;
+    }
+
+    public void setDescription(String description)
+    {
+        this.description = description;
     }
 }
