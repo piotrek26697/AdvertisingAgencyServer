@@ -6,10 +6,7 @@ import entities.Advertisement;
 import entities.Billboard;
 
 import javax.ejb.EJB;
-import javax.ws.rs.GET;
-import javax.ws.rs.PUT;
-import javax.ws.rs.Path;
-import javax.ws.rs.QueryParam;
+import javax.ws.rs.*;
 import javax.xml.bind.JAXB;
 import java.io.InputStream;
 import java.io.StringWriter;
@@ -20,6 +17,13 @@ public class BillboardHandlingREST
 {
     @EJB
     private BillboardHandlingEJB billboardBean;
+
+    @POST
+    public void createBillboard(InputStream in)
+    {
+        Billboard billboard = JAXB.unmarshal(in, Billboard.class);
+        billboardBean.create(billboard);
+    }
 
     @PUT
     public void billboardUpdate(InputStream inputStream)

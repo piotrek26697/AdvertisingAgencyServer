@@ -34,7 +34,7 @@ public class AdvertisementHandlingEJB
 
     public void update(Advertisement element)
     {
-
+        manager.merge(element);
     }
 
     public void delete(int id)

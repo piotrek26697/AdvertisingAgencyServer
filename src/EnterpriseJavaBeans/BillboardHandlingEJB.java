@@ -25,4 +25,9 @@ public class BillboardHandlingEJB
         List<Advertisement> list = billboard.getAdvertisementDisplayed();
         return list;
     }
+
+    public void create(Billboard billboard)
+    {
+        manager.persist(billboard);
+    }
 }

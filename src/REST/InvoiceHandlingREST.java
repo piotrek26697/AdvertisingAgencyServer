@@ -3,12 +3,12 @@ package REST;
 import EnterpriseJavaBeans.InvoiceHandlingEJB;
 import collections.Advertisements;
 import entities.Advertisement;
+import entities.Invoice;
 
 import javax.ejb.EJB;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.QueryParam;
+import javax.ws.rs.*;
 import javax.xml.bind.JAXB;
+import java.io.InputStream;
 import java.io.StringWriter;
 import java.util.List;
 
@@ -17,6 +17,20 @@ public class InvoiceHandlingREST
 {
     @EJB
     private InvoiceHandlingEJB invoiceBean;
+
+    @POST
+    public void createInvoice(InputStream in)
+    {
+        Invoice invoice = JAXB.unmarshal(in, Invoice.class);
+        invoiceBean.create(invoice);
+    }
+
+    @PUT
+    public void updateInvoice(InputStream in)
+    {
+        Invoice invoice = JAXB.unmarshal(in, Invoice.class);
+        invoiceBean.update(invoice);
+    }
 
     @GET
     public String getAdvertisementList(@QueryParam("invoiceID") int invoiceID)

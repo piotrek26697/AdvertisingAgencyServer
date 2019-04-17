@@ -1,15 +1,13 @@
 package entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.util.Calendar;
 import java.util.List;
 
 @XmlRootElement
 @Entity
+@Table(name = "Invoices")
 public class Invoice
 {
     @Id

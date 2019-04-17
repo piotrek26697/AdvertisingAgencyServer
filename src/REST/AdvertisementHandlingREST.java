@@ -9,10 +9,7 @@ import entities.Client;
 import entities.Invoice;
 
 import javax.ejb.EJB;
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.QueryParam;
+import javax.ws.rs.*;
 import javax.xml.bind.JAXB;
 import java.io.InputStream;
 import java.io.StringWriter;
@@ -29,6 +26,13 @@ public class AdvertisementHandlingREST
     {
         Advertisement ad = JAXB.unmarshal(in, Advertisement.class);
         advertisementBean.create(ad);
+    }
+
+    @PUT
+    public void updateAdvertisement(InputStream in)
+    {
+        Advertisement ad = JAXB.unmarshal(in, Advertisement.class);
+        advertisementBean.update(ad);
     }
 
     @GET

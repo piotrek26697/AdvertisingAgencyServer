@@ -20,4 +20,14 @@ public class InvoiceHandlingEJB
         Invoice invoice = manager.find(Invoice.class, invoiceID);
         return invoice.getAdvertisementList();
     }
+
+    public void create(Invoice invoice)
+    {
+        manager.persist(invoice);
+    }
+
+    public void update(Invoice invoice)
+    {
+        manager.merge(invoice);
+    }
 }
