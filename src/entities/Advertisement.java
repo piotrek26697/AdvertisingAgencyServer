@@ -2,7 +2,6 @@ package entities;
 
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
-import java.util.Calendar;
 import java.util.List;
 
 @XmlRootElement
@@ -15,10 +14,6 @@ public class Advertisement
     private int id;
 
     private String description;
-
-    private Calendar dateFrom;
-
-    private Calendar dateTo;
 
     private double price;
 
@@ -41,26 +36,6 @@ public class Advertisement
     public void setId(int id)
     {
         this.id = id;
-    }
-
-    public Calendar getDateFrom()
-    {
-        return dateFrom;
-    }
-
-    public void setDateFrom(Calendar dateFrom)
-    {
-        this.dateFrom = dateFrom;
-    }
-
-    public Calendar getDateTo()
-    {
-        return dateTo;
-    }
-
-    public void setDateTo(Calendar dateTo)
-    {
-        this.dateTo = dateTo;
     }
 
     public double getPrice()
