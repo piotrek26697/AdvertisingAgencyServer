@@ -20,7 +20,7 @@ public class Client implements Serializable
 
     private String address;
 
-    @OneToMany(mappedBy = "client")
+    @OneToMany(mappedBy = "client", fetch = FetchType.LAZY)
     private List<Advertisement> adsList;
 
     public int getId()

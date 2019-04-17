@@ -20,13 +20,13 @@ public class Advertisement
 
     private double price;
 
-    @ManyToOne
+    @ManyToOne(fetch=FetchType.EAGER)
     private Client client;
 
-    @ManyToMany
+    @ManyToMany(fetch=FetchType.LAZY)
     private List<Invoice> invoiceList;
 
-    @ManyToMany
+    @ManyToMany(fetch=FetchType.LAZY)
     private List<Billboard> billboardList;
 
     public int getId()

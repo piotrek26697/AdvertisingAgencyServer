@@ -15,7 +15,7 @@ public class Billboard
 
     private String address;
 
-    @ManyToMany
+    @ManyToMany(fetch=FetchType.LAZY)
     private List<Advertisement> advertisementDisplayed;
 
     private BillboardSize billboardSize;

@@ -20,7 +20,7 @@ public class Invoice
 
     private Calendar date;
 
-    @ManyToMany
+    @ManyToMany(fetch=FetchType.LAZY)
     private List<Advertisement> advertisementList;
 
     public int getId()
