@@ -20,6 +20,21 @@ public class AdvertisementHandlingREST
     @EJB
     private AdvertisementHandlingEJB advertisementBean;
 
+    /*@GET
+    public String getAdvertisements(@QueryParam("title") String title,
+                                    @QueryParam("priceFrom") String priceFrom,
+                                    @QueryParam("priceTo") String priceTo)
+    {
+        String params = "where name like '" + title + "%' and price >" + priceFrom + "and price < '" + priceTo;
+        List<Advertisement>
+    }*/
+
+    @DELETE
+    public void deleteAdvertisement(@QueryParam("advertisementID") int id)
+    {
+        advertisementBean.delete(id);
+    }
+
     @POST
     public void createAdvertisement(InputStream in)
     {

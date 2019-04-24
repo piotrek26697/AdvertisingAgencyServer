@@ -13,6 +13,8 @@ public class Advertisement
     @GeneratedValue
     private int id;
 
+    private String name;
+
     private String description;
 
     private double price;
@@ -27,6 +29,16 @@ public class Advertisement
     @Transient
     @ManyToMany(fetch = FetchType.LAZY)
     private List<Billboard> billboardList;
+
+    public String getName()
+    {
+        return name;
+    }
+
+    public void setName(String name)
+    {
+        this.name = name;
+    }
 
     public int getId()
     {

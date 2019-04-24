@@ -75,6 +75,18 @@ public class ClientHandlingREST
         return sw.toString();
     }
 
+    /*@PUT
+    @Path("/advertisementAdd")
+    public void updateAdvertisementList(@QueryParam("clientID") int id, InputStream inputStream)
+    {
+        Advertisement ad = JAXB.unmarshal(inputStream, Advertisement.class);
+        List<Advertisement> list = clientBean.getAdvertisementList(id);
+        Client client = clientBean.find(id);
+        list.add(ad);
+        client.setAdsList(list);
+        clientBean.update(client);
+    }*/
+
     @DELETE
     public void deleteClient(@QueryParam("id") int id)
     {

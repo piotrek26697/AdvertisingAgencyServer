@@ -39,7 +39,8 @@ public class AdvertisementHandlingEJB
 
     public void delete(int id)
     {
-
+        Advertisement ad = manager.find(Advertisement.class, id);
+        manager.remove(ad);
     }
 
     public List<Billboard> getBillboardList(int id)

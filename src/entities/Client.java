@@ -2,7 +2,9 @@ package entities;
 
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 @XmlRootElement
@@ -20,9 +22,13 @@ public class Client implements Serializable
 
     private String address;
 
-    @Transient
     @OneToMany(mappedBy = "client", fetch = FetchType.LAZY)
     private List<Advertisement> adsList;
+
+    public Client()
+    {
+        adsList = new ArrayList<>();
+    }
 
     public int getId()
     {
@@ -64,6 +70,7 @@ public class Client implements Serializable
         this.address = address;
     }
 
+    @XmlTransient
     public List<Advertisement> getAdsList()
     {
         return adsList;

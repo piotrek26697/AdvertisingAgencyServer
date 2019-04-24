@@ -7,6 +7,8 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 @Stateless
@@ -27,7 +29,8 @@ public class ClientHandlingEJB
     public List<Advertisement> getAdvertisementList(int id)
     {
         Client client = manager.find(Client.class, id);
-        List<Advertisement> list = client.getAdsList();
+        List<Advertisement> list = Arrays.asList(new Advertisement[client.getAdsList().size()]);
+        Collections.copy(list, client.getAdsList());
         return list;
     }
 
@@ -45,5 +48,10 @@ public class ClientHandlingEJB
     {
         Client client = manager.find(Client.class, id);
         manager.remove(client);
+    }
+
+    public Client find(int id)
+    {
+        return manager.find(Client.class, id);
     }
 }
