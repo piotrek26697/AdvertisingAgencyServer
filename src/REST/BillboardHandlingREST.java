@@ -26,13 +26,6 @@ public class BillboardHandlingREST
         billboardBean.create(billboard);
     }
 
-    @PUT
-    public void billboardUpdate(InputStream inputStream)
-    {
-        Billboard billboard = JAXB.unmarshal(inputStream, Billboard.class);
-        billboardBean.update(billboard);
-    }
-
     @GET
     public String getBillboardList(@QueryParam("address") String address, @QueryParam("size") String size)
     {
