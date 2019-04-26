@@ -2,6 +2,8 @@ package entities;
 
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
+import java.util.ArrayList;
 import java.util.List;
 
 @XmlRootElement
@@ -15,11 +17,16 @@ public class Billboard
 
     private String address;
 
-    @Transient
-    @ManyToMany(fetch=FetchType.LAZY)
-    private List<Advertisement> advertisementDisplayed;
+    @OneToMany(fetch=FetchType.LAZY, mappedBy = "billboard")
+    private List<BillboardOccupation> billboardOccupationList;
 
+    @Enumerated(EnumType.STRING)
     private BillboardSize billboardSize;
+
+    public Billboard()
+    {
+        billboardOccupationList = new ArrayList<>();
+    }
 
     public int getId()
     {
@@ -41,14 +48,15 @@ public class Billboard
         this.address = address;
     }
 
-    public List<Advertisement> getAdvertisementDisplayed()
+    @XmlTransient
+    public List<BillboardOccupation> getBillboardOccupationList()
     {
-        return advertisementDisplayed;
+        return billboardOccupationList;
     }
 
-    public void setAdvertisementDisplayed(List<Advertisement> advertisementDisplayed)
+    public void setBillboardOccupationList(List<BillboardOccupation> billboardOccupationList)
     {
-        this.advertisementDisplayed = advertisementDisplayed;
+        this.billboardOccupationList = billboardOccupationList;
     }
 
     public BillboardSize getBillboardSize()

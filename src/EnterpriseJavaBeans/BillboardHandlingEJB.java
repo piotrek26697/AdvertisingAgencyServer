@@ -6,6 +6,7 @@ import entities.Billboard;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import java.util.List;
 
 @Stateless
@@ -14,6 +15,15 @@ public class BillboardHandlingEJB
     @PersistenceContext(name = "adAgencyPU")
     private EntityManager manager;
 
+    public List<Billboard> getBillboardList(String params)
+    {
+        String str = "select b from Billboard b " + params;
+        Query query = manager.createQuery(str);
+        @SuppressWarnings("unchecked")
+        List<Billboard> list = query.getResultList();
+        return list;
+    }
+
     public void update(Billboard billboard)
     {
         manager.merge(billboard);
@@ -21,9 +31,7 @@ public class BillboardHandlingEJB
 
     public List<Advertisement> find(int billboardID)
     {
-        Billboard billboard = manager.find(Billboard.class, billboardID);
-        List<Advertisement> list = billboard.getAdvertisementDisplayed();
-        return list;
+        return null;
     }
 
     public void create(Billboard billboard)

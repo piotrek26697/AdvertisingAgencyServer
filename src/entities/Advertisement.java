@@ -2,6 +2,8 @@ package entities;
 
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
+import java.util.ArrayList;
 import java.util.List;
 
 @XmlRootElement
@@ -26,9 +28,13 @@ public class Advertisement
     @ManyToMany(fetch = FetchType.LAZY)
     private List<Invoice> invoiceList;
 
-    @Transient
-    @ManyToMany(fetch = FetchType.LAZY)
-    private List<Billboard> billboardList;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "advertisement")
+    private List<BillboardOccupation> billboardOccupationList;
+
+    public Advertisement()
+    {
+        billboardOccupationList = new ArrayList<>();
+    }
 
     public String getName()
     {
@@ -80,14 +86,15 @@ public class Advertisement
         this.invoiceList = invoice;
     }
 
-    public List<Billboard> getBillboardList()
+    @XmlTransient
+    public List<BillboardOccupation> getBillboardOccupationList()
     {
-        return billboardList;
+        return billboardOccupationList;
     }
 
-    public void setBillboardList(List<Billboard> billboardList)
+    public void setBillboardOccupationList(List<BillboardOccupation> billboardOccupationList)
     {
-        this.billboardList = billboardList;
+        this.billboardOccupationList = billboardOccupationList;
     }
 
     public String getDescription()

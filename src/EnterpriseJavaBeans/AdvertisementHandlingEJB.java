@@ -46,7 +46,7 @@ public class AdvertisementHandlingEJB
     public List<Billboard> getBillboardList(int id)
     {
         Advertisement ad = manager.find(Advertisement.class, id);
-        return ad.getBillboardList();
+        return null;
     }
 
     public Client getClient(int id)

@@ -2,6 +2,7 @@ package REST;
 
 import EnterpriseJavaBeans.BillboardHandlingEJB;
 import collections.Advertisements;
+import collections.Billboards;
 import entities.Advertisement;
 import entities.Billboard;
 
@@ -33,6 +34,21 @@ public class BillboardHandlingREST
     }
 
     @GET
+    public String getBillboardList(@QueryParam("address") String address, @QueryParam("size") String size)
+    {
+        if(size.isEmpty())
+            size = "%";
+        String params = "where address like '" + address + "%' and billboardSize like '" + size + "'";
+        List<Billboard> list = billboardBean.getBillboardList(params);
+        Billboards billboards = new Billboards();
+        billboards.setBillboardList(list);
+        StringWriter sw = new StringWriter();
+        JAXB.marshal(billboards, sw);
+        return sw.toString();
+    }
+
+    @GET
+    @Path("/advertisementList")
     public String getAdvertisementList(@QueryParam("billboardID") int billboardID)
     {
         List<Advertisement> list = billboardBean.find(billboardID);
