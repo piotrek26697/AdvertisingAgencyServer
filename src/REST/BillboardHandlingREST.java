@@ -7,7 +7,10 @@ import entities.Advertisement;
 import entities.Billboard;
 
 import javax.ejb.EJB;
-import javax.ws.rs.*;
+import javax.ws.rs.GET;
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
+import javax.ws.rs.QueryParam;
 import javax.xml.bind.JAXB;
 import java.io.InputStream;
 import java.io.StringWriter;
