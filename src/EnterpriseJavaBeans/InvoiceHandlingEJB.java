@@ -14,20 +14,4 @@ public class InvoiceHandlingEJB
     @PersistenceContext(name = "adAgencyPU")
     private EntityManager manager;
 
-
-    public List<Advertisement> getAdvertisementList(int invoiceID)
-    {
-        Invoice invoice = manager.find(Invoice.class, invoiceID);
-        return invoice.getAdvertisementList();
-    }
-
-    public void create(Invoice invoice)
-    {
-        manager.persist(invoice);
-    }
-
-    public void update(Invoice invoice)
-    {
-        manager.merge(invoice);
-    }
 }
