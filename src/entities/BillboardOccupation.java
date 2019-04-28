@@ -1,11 +1,17 @@
 package entities;
 
+import model.LocalDateAdapter;
+
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.time.LocalDate;
 
 @Entity
 @XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 public class BillboardOccupation
 {
     @Id
@@ -18,8 +24,10 @@ public class BillboardOccupation
     @ManyToOne(fetch = FetchType.EAGER)
     private Advertisement advertisement;
 
+    @XmlJavaTypeAdapter(LocalDateAdapter.class)
     private LocalDate dateFrom;
 
+    @XmlJavaTypeAdapter(LocalDateAdapter.class)
     private LocalDate dateTo;
 
     public int getId()

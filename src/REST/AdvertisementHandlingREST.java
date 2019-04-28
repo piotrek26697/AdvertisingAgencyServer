@@ -1,6 +1,7 @@
 package REST;
 
 import EnterpriseJavaBeans.AdvertisementHandlingEJB;
+import EnterpriseJavaBeans.BillboardOccpupationHandlingEJB;
 import collections.Billboards;
 import collections.Invoices;
 import entities.Advertisement;
@@ -20,6 +21,9 @@ public class AdvertisementHandlingREST
     @EJB
     private AdvertisementHandlingEJB advertisementBean;
 
+    @EJB
+    private BillboardOccpupationHandlingEJB billboardOccpupationHandlingEJB;
+
     /*@GET
     public String getAdvertisements(@QueryParam("title") String title,
                                     @QueryParam("priceFrom") String priceFrom,
@@ -30,9 +34,14 @@ public class AdvertisementHandlingREST
     }*/
 
     @DELETE
-    public void deleteAdvertisement(@QueryParam("advertisementID") int id)
+    public String deleteAdvertisement(@QueryParam("advertisementID") int id)
     {
-        advertisementBean.delete(id);
+        if (billboardOccpupationHandlingEJB.getBillboardOccupationListForAd(id).size() == 0)
+        {
+            advertisementBean.delete(id);
+            return "0";
+        }else
+            return "-1";
     }
 
     @POST

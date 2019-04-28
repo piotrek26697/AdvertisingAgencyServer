@@ -1,12 +1,15 @@
 package entities;
 
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 import java.util.ArrayList;
 import java.util.List;
 
 @XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 @Entity
 @Table(name = "Advertisements")
 public class Advertisement
@@ -28,6 +31,7 @@ public class Advertisement
     @ManyToMany(fetch = FetchType.LAZY)
     private List<Invoice> invoiceList;
 
+    @XmlTransient
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "advertisement")
     private List<BillboardOccupation> billboardOccupationList;
 
@@ -86,7 +90,6 @@ public class Advertisement
         this.invoiceList = invoice;
     }
 
-    @XmlTransient
     public List<BillboardOccupation> getBillboardOccupationList()
     {
         return billboardOccupationList;

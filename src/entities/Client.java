@@ -1,6 +1,8 @@
 package entities;
 
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 import java.io.Serializable;
@@ -8,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 @Entity
 @Table(name = "Clients")
 public class Client implements Serializable
@@ -22,6 +25,7 @@ public class Client implements Serializable
 
     private String address;
 
+    @XmlTransient
     @OneToMany(mappedBy = "client", fetch = FetchType.LAZY)
     private List<Advertisement> adsList;
 
@@ -70,7 +74,6 @@ public class Client implements Serializable
         this.address = address;
     }
 
-    @XmlTransient
     public List<Advertisement> getAdsList()
     {
         return adsList;

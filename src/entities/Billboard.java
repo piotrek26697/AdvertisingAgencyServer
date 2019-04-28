@@ -1,12 +1,17 @@
 package entities;
 
+import model.BillboardSize;
+
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 import java.util.ArrayList;
 import java.util.List;
 
 @XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 @Entity
 @Table(name="Billboards")
 public class Billboard
@@ -17,6 +22,7 @@ public class Billboard
 
     private String address;
 
+    @XmlTransient
     @OneToMany(fetch=FetchType.LAZY, mappedBy = "billboard")
     private List<BillboardOccupation> billboardOccupationList;
 
@@ -48,7 +54,6 @@ public class Billboard
         this.address = address;
     }
 
-    @XmlTransient
     public List<BillboardOccupation> getBillboardOccupationList()
     {
         return billboardOccupationList;

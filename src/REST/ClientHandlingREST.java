@@ -88,9 +88,17 @@ public class ClientHandlingREST
     }*/
 
     @DELETE
-    public void deleteClient(@QueryParam("id") int id)
+    public String deleteClient(@QueryParam("id") int id)
     {
-        clientBean.delete(id);
+        List<Advertisement> list = clientBean.getAdvertisementList(id);
+        if(list.size() == 0)
+        {
+            clientBean.delete(id);
+            return "0";
+        }else
+        {
+            return "-1";
+        }
     }
 
     @PUT
