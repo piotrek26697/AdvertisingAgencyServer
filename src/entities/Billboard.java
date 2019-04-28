@@ -13,7 +13,7 @@ import java.util.List;
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
 @Entity
-@Table(name="Billboards")
+@Table(name = "Billboards")
 public class Billboard
 {
     @Id
@@ -23,7 +23,7 @@ public class Billboard
     private String address;
 
     @XmlTransient
-    @OneToMany(fetch=FetchType.LAZY, mappedBy = "billboard")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "billboard")
     private List<BillboardOccupation> billboardOccupationList;
 
     @Enumerated(EnumType.STRING)

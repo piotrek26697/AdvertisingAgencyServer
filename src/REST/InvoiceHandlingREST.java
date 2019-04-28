@@ -11,5 +11,5 @@ public class InvoiceHandlingREST
     @EJB
     private InvoiceHandlingEJB invoiceBean;
 
-    
+
 }

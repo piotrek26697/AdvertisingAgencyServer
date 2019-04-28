@@ -32,7 +32,7 @@ public class BillboardHandlingREST
     @GET
     public String getBillboardList(@QueryParam("address") String address, @QueryParam("size") String size)
     {
-        if(size.isEmpty())
+        if (size.isEmpty())
             size = "%";
         String params = "where address like '" + address + "%' and billboardSize like '" + size + "'";
         List<Billboard> list = billboardBean.getBillboardList(params);

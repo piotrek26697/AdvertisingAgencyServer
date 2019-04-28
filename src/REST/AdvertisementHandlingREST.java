@@ -40,7 +40,7 @@ public class AdvertisementHandlingREST
         {
             advertisementBean.delete(id);
             return "0";
-        }else
+        } else
             return "-1";
     }
 

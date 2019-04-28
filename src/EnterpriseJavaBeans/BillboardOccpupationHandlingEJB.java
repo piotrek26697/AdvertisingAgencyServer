@@ -21,7 +21,7 @@ public class BillboardOccpupationHandlingEJB
 
     public List<BillboardOccupation> getBillboardOccupationListForAd(int id)
     {
-        String str = "select b from BillboardOccupation b where b.advertisement.id = "+id;
+        String str = "select b from BillboardOccupation b where b.advertisement.id = " + id;
         Query query = manager.createQuery(str);
         @SuppressWarnings("unchecked")
         List<BillboardOccupation> list = query.getResultList();

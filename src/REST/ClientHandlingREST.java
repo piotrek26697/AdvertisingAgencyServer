@@ -91,11 +91,11 @@ public class ClientHandlingREST
     public String deleteClient(@QueryParam("id") int id)
     {
         List<Advertisement> list = clientBean.getAdvertisementList(id);
-        if(list.size() == 0)
+        if (list.size() == 0)
         {
             clientBean.delete(id);
             return "0";
-        }else
+        } else
         {
             return "-1";
         }

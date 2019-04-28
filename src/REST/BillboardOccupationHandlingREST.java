@@ -26,6 +26,7 @@ public class BillboardOccupationHandlingREST
         BillboardOccupation billboardOccupation = JAXB.unmarshal(in, BillboardOccupation.class);
         billboardOccupationBean.create(billboardOccupation);
     }
+
     @GET
     public String getBillboardOccupationListForAd(@QueryParam("id") int id)
     {

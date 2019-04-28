@@ -24,7 +24,7 @@ public class Invoice
     private Calendar date;
 
     @Transient
-    @ManyToMany(fetch=FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.LAZY)
     private List<Advertisement> advertisementList;
 
     public int getId()
