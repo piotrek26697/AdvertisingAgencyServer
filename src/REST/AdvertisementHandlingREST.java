@@ -1,11 +1,9 @@
 package REST;
 
 import EnterpriseJavaBeans.AdvertisementHandlingEJB;
-import EnterpriseJavaBeans.BillboardOccpupationHandlingEJB;
-import collections.Billboards;
+import EnterpriseJavaBeans.BillboardOccupationHandlingEJB;
 import collections.Invoices;
 import entities.Advertisement;
-import entities.Billboard;
 import entities.Invoice;
 
 import javax.ejb.EJB;
@@ -22,7 +20,7 @@ public class AdvertisementHandlingREST
     private AdvertisementHandlingEJB advertisementBean;
 
     @EJB
-    private BillboardOccpupationHandlingEJB billboardOccpupationHandlingEJB;
+    private BillboardOccupationHandlingEJB billboardOccupationHandlingEJB;
 
     /*@GET
     public String getAdvertisements(@QueryParam("title") String title,
@@ -36,7 +34,7 @@ public class AdvertisementHandlingREST
     @DELETE
     public String deleteAdvertisement(@QueryParam("advertisementID") int id)
     {
-        if (billboardOccpupationHandlingEJB.getBillboardOccupationListForAd(id).size() == 0)
+        if (billboardOccupationHandlingEJB.getBillboardOccupationListForAd(id).size() == 0)
         {
             advertisementBean.delete(id);
             return "0";
@@ -68,18 +66,6 @@ public class AdvertisementHandlingREST
         invoices.setInvoiceList(list);
         JAXB.marshal(invoices, stringWriter);
         return stringWriter.toString();
-    }
-
-    @GET
-    @Path("/billboardList")
-    public String getBillboardList(@QueryParam("advertisementID") int advertisementID)
-    {
-        List<Billboard> list = advertisementBean.getBillboardList(advertisementID);
-        Billboards billboards = new Billboards();
-        billboards.setBillboardList(list);
-        StringWriter sw = new StringWriter();
-        JAXB.marshal(billboards, sw);
-        return sw.toString();
     }
 
     /*@GET

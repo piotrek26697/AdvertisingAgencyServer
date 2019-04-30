@@ -9,7 +9,7 @@ import javax.persistence.Query;
 import java.util.List;
 
 @Stateless
-public class BillboardOccpupationHandlingEJB
+public class BillboardOccupationHandlingEJB
 {
     @PersistenceContext(name = "adAgencyPU")
     private EntityManager manager;

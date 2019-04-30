@@ -43,15 +43,9 @@ public class AdvertisementHandlingEJB
         manager.remove(ad);
     }
 
-    public List<Billboard> getBillboardList(int id)
-    {
-        Advertisement ad = manager.find(Advertisement.class, id);
-        return null;
-    }
-
-    public Client getClient(int id)
+    /*public Client getClient(int id)
     {
         Advertisement ad = manager.find(Advertisement.class, id);
         return ad.getClient();
-    }
+    }*/
 }

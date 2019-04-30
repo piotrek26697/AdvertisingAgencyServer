@@ -1,6 +1,6 @@
 package REST;
 
-import EnterpriseJavaBeans.BillboardOccpupationHandlingEJB;
+import EnterpriseJavaBeans.BillboardOccupationHandlingEJB;
 import collections.BillboardOccupations;
 import entities.BillboardOccupation;
 
@@ -18,7 +18,7 @@ import java.util.List;
 public class BillboardOccupationHandlingREST
 {
     @EJB
-    private BillboardOccpupationHandlingEJB billboardOccupationBean;
+    private BillboardOccupationHandlingEJB billboardOccupationBean;
 
     @POST
     public void createBillboardOccupation(InputStream in)
