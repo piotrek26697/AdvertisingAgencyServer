@@ -19,9 +19,11 @@ public class BillboardOccupation
     private int id;
 
     @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "billboard_id")
     private Billboard billboard;
 
     @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "advertisement_id")
     private Advertisement advertisement;
 
     @XmlJavaTypeAdapter(LocalDateAdapter.class)

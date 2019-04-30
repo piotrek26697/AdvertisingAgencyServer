@@ -1,9 +1,13 @@
 package entities;
 
+import model.LocalDateAdapter;
+
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.List;
 
@@ -21,10 +25,10 @@ public class Invoice
 
     private int tax;
 
-    private Calendar date;
+    @XmlJavaTypeAdapter(LocalDateAdapter.class)
+    private LocalDate date;
 
-    @Transient
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "invoiceList")
     private List<Advertisement> advertisementList;
 
     public int getId()
@@ -57,12 +61,12 @@ public class Invoice
         this.tax = tax;
     }
 
-    public Calendar getDate()
+    public LocalDate getDate()
     {
         return date;
     }
 
-    public void setDate(Calendar date)
+    public void setDate(LocalDate date)
     {
         this.date = date;
     }

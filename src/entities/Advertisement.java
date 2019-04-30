@@ -25,9 +25,13 @@ public class Advertisement
     private double price;
 
     @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "client_id")
     private Client client;
 
-    @Transient
+    @JoinTable(
+            name = "Advertisement_Invoice",
+            joinColumns = @JoinColumn(name = "advertisement_id"),
+            inverseJoinColumns = @JoinColumn(name = "invoice_id"))
     @ManyToMany(fetch = FetchType.LAZY)
     private List<Invoice> invoiceList;
 
