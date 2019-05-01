@@ -28,9 +28,16 @@ public class BillboardOccupationHandlingREST
     }
 
     @GET
-    public String getBillboardOccupationListForAd(@QueryParam("id") int id)
+    public String getBillboardOccupationListForAd(@QueryParam("ID") int id,
+                                                  @QueryParam("type") String type)
     {
-        List<BillboardOccupation> list = billboardOccupationBean.getBillboardOccupationListForAd(id);
+        List<BillboardOccupation> list;
+        if (type.equals("adID"))
+            list = billboardOccupationBean.getBillboardOccupationListFor("adID", id);
+        else if(type.equals("billboardID"))
+            list = billboardOccupationBean.getBillboardOccupationListFor("billboardID",id);
+        else
+            return null;
         BillboardOccupations billboardOccupations = new BillboardOccupations();
         billboardOccupations.setList(list);
         StringWriter sw = new StringWriter();

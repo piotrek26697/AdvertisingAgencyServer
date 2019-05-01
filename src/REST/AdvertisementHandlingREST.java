@@ -34,7 +34,7 @@ public class AdvertisementHandlingREST
     @DELETE
     public String deleteAdvertisement(@QueryParam("advertisementID") int id)
     {
-        if (billboardOccupationHandlingEJB.getBillboardOccupationListForAd(id).size() == 0)
+        if (billboardOccupationHandlingEJB.getBillboardOccupationListFor("adID", id).size() == 0)
         {
             advertisementBean.delete(id);
             return "0";

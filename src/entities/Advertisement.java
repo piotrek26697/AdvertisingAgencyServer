@@ -33,6 +33,7 @@ public class Advertisement
             joinColumns = @JoinColumn(name = "advertisement_id"),
             inverseJoinColumns = @JoinColumn(name = "invoice_id"))
     @ManyToMany(fetch = FetchType.LAZY)
+    @XmlTransient
     private List<Invoice> invoiceList;
 
     @XmlTransient

@@ -6,6 +6,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import java.util.ArrayList;
 import java.util.List;
 
 @Stateless
@@ -19,9 +20,14 @@ public class BillboardOccupationHandlingEJB
         manager.persist(billboardOccupation);
     }
 
-    public List<BillboardOccupation> getBillboardOccupationListForAd(int id)
+    public List<BillboardOccupation> getBillboardOccupationListFor(String type, int id)
     {
-        String str = "select b from BillboardOccupation b where b.advertisement.id = " + id;
+        String str;
+        if (type.equals("adID"))
+            str = "select b from BillboardOccupation b where b.advertisement.id = " + id;
+        else if (type.equals("billboardID"))
+            str = "select b from BillboardOccupation b where b.billboard.id = " + id;
+        else return new ArrayList<>();
         Query query = manager.createQuery(str);
         @SuppressWarnings("unchecked")
         List<BillboardOccupation> list = query.getResultList();
