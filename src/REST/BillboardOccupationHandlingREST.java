@@ -28,13 +28,14 @@ public class BillboardOccupationHandlingREST
     }
 
     @GET
-    public String getBillboardOccupationListForAd(@QueryParam("ID") int id,
-                                                  @QueryParam("type") String type)
+    public String getBillboardOccupationListFor(@QueryParam("ID") int id,
+                                                @QueryParam("type") String type,
+                                                @QueryParam("enableHistory") boolean enableHistory)
     {
         List<BillboardOccupation> list;
         if (type.equals("adID"))
             list = billboardOccupationBean.getBillboardOccupationListFor("adID", id);
-        else if(type.equals("billboardID"))
+        else if(type.equals("billboardID")) //TODO and in client app
             list = billboardOccupationBean.getBillboardOccupationListFor("billboardID",id);
         else
             return null;
