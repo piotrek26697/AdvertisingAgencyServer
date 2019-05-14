@@ -8,7 +8,6 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.time.LocalDate;
-import java.util.Calendar;
 import java.util.List;
 
 @XmlRootElement
@@ -21,9 +20,11 @@ public class Invoice
     @GeneratedValue
     private int id;
 
-    private double amount;
+    private double amountNetto;
 
-    private int tax;
+    private double amountBrutto;
+
+    private int tax = 23;
 
     @XmlJavaTypeAdapter(LocalDateAdapter.class)
     private LocalDate date;
@@ -41,14 +42,14 @@ public class Invoice
         this.id = id;
     }
 
-    public double getAmount()
+    public double getAmountNetto()
     {
-        return amount;
+        return amountNetto;
     }
 
-    public void setAmount(double amount)
+    public void setAmountNetto(double amount)
     {
-        this.amount = amount;
+        this.amountNetto = amount;
     }
 
     public int getTax()
@@ -79,5 +80,15 @@ public class Invoice
     public void setAdvertisementList(List<Advertisement> advertisementList)
     {
         this.advertisementList = advertisementList;
+    }
+
+    public double getAmountBrutto()
+    {
+        return amountBrutto;
+    }
+
+    public void setAmountBrutto(double amountBrutto)
+    {
+        this.amountBrutto = amountBrutto;
     }
 }

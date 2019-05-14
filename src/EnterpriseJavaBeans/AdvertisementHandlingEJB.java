@@ -8,6 +8,9 @@ import entities.Invoice;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 @Stateless
@@ -24,7 +27,9 @@ public class AdvertisementHandlingEJB
     public List<Invoice> getInvoiceList(int id)
     {
         Advertisement ad = manager.find(Advertisement.class, id);
-        return ad.getInvoiceList();
+        List<Invoice> list = Arrays.asList(new Invoice[ad.getInvoiceList().size()]);
+        Collections.copy(list, ad.getInvoiceList());
+        return new ArrayList<>(list);
     }
 
     public void create(Advertisement ad)
