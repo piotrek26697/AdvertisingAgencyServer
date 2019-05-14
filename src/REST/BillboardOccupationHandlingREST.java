@@ -33,12 +33,8 @@ public class BillboardOccupationHandlingREST
                                                 @QueryParam("enableHistory") boolean enableHistory)
     {
         List<BillboardOccupation> list;
-        if (type.equals("adID"))
-            list = billboardOccupationBean.getBillboardOccupationListFor("adID", id);
-        else if(type.equals("billboardID")) //TODO and in client app
-            list = billboardOccupationBean.getBillboardOccupationListFor("billboardID",id);
-        else
-            return null;
+        list = billboardOccupationBean.getBillboardOccupationListFor(type, id, enableHistory);
+
         BillboardOccupations billboardOccupations = new BillboardOccupations();
         billboardOccupations.setList(list);
         StringWriter sw = new StringWriter();

@@ -6,6 +6,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,14 +21,19 @@ public class BillboardOccupationHandlingEJB
         manager.persist(billboardOccupation);
     }
 
-    public List<BillboardOccupation> getBillboardOccupationListFor(String type, int id)
+    public List<BillboardOccupation> getBillboardOccupationListFor(String type, int id, boolean enableHistory)
     {
         String str;
         if (type.equals("adID"))
             str = "select b from BillboardOccupation b where b.advertisement.id = " + id;
         else if (type.equals("billboardID"))
-            str = "select b from BillboardOccupation b where b.billboard.id = " + id;
-        else return new ArrayList<>();
+        {
+            if (enableHistory)
+                str = "select b from BillboardOccupation b where b.billboard.id = " + id;
+            else
+                str = "select b from BillboardOccupation b where b.billboard.id =" + id+
+                        " and b.dateTo >=" + LocalDate.now();
+        } else return new ArrayList<>();
         Query query = manager.createQuery(str);
         @SuppressWarnings("unchecked")
         List<BillboardOccupation> list = query.getResultList();
