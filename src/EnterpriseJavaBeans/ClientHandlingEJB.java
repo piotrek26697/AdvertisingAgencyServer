@@ -29,9 +29,10 @@ public class ClientHandlingEJB
     public List<Advertisement> getAdvertisementList(int id)
     {
         Client client = manager.find(Client.class, id);
-        List<Advertisement> list = Arrays.asList(new Advertisement[client.getAdsList().size()]);
-        Collections.copy(list, client.getAdsList());
-        return list;
+//        List<Advertisement> list = Arrays.asList(new Advertisement[client.getAdsList().size()]);
+//        Collections.copy(list, client.getAdsList());
+        client.getAdsList().size();
+        return client.getAdsList();
     }
 
     public void create(Client client)

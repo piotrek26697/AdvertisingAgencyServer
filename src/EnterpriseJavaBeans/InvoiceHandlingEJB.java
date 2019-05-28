@@ -36,8 +36,9 @@ public class InvoiceHandlingEJB
     public List<Advertisement> getAds(int id)
     {
         Invoice invoice = manager.find(Invoice.class, id);
-        List<Advertisement> list = Arrays.asList(new Advertisement[invoice.getAdvertisementList().size()]);
-        Collections.copy(list, invoice.getAdvertisementList());
-        return list;
+//        List<Advertisement> list = Arrays.asList(new Advertisement[invoice.getAdvertisementList().size()]);
+//        Collections.copy(list, invoice.getAdvertisementList());
+        invoice.getAdvertisementList().size();
+        return invoice.getAdvertisementList();
     }
 }

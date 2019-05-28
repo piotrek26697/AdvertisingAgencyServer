@@ -27,9 +27,10 @@ public class AdvertisementHandlingEJB
     public List<Invoice> getInvoiceList(int id)
     {
         Advertisement ad = manager.find(Advertisement.class, id);
-        List<Invoice> list = Arrays.asList(new Invoice[ad.getInvoiceList().size()]);
-        Collections.copy(list, ad.getInvoiceList());
-        return new ArrayList<>(list);
+//        List<Invoice> list = Arrays.asList(new Invoice[ad.getInvoiceList().size()]);
+//        Collections.copy(list, ad.getInvoiceList());
+        ad.getInvoiceList().size();
+        return ad.getInvoiceList();
     }
 
     public void create(Advertisement ad)
