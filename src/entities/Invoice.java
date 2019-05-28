@@ -6,6 +6,7 @@ import javax.persistence.*;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.time.LocalDate;
 import java.util.List;
@@ -29,6 +30,7 @@ public class Invoice
     @XmlJavaTypeAdapter(LocalDateAdapter.class)
     private LocalDate date;
 
+    @XmlTransient
     @ManyToMany(fetch = FetchType.LAZY, mappedBy = "invoiceList")
     private List<Advertisement> advertisementList;
 
