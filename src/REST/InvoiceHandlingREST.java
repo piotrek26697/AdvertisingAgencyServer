@@ -14,12 +14,13 @@ import javax.ws.rs.Path;
 import javax.ws.rs.QueryParam;
 import javax.xml.bind.JAXB;
 import java.io.InputStream;
-import java.io.StringReader;
 import java.io.StringWriter;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Class which handles requests for Invoice class instances.
+ */
 @Path("/invoice")
 public class InvoiceHandlingREST
 {
@@ -29,6 +30,11 @@ public class InvoiceHandlingREST
     @EJB
     private AdvertisementHandlingEJB adBean;
 
+    /**
+     * Method invoked to create a new record in database based on Invoice class.
+     *
+     * @param inputStream - object to be inserted into database represented as InputStream
+     */
     @POST
     public void createInvoice(InputStream inputStream)
     {
@@ -53,6 +59,13 @@ public class InvoiceHandlingREST
         }
     }
 
+    /**
+     * Method invoked to get the collection of Invoice class instances from database.
+     * Collection corresponds with one client record.
+     *
+     * @param id - client's record identifier
+     * @return collection of Invoice class instances
+     */
     @GET
     public String getInvoices(@QueryParam("ID") int id)
     {
@@ -64,6 +77,12 @@ public class InvoiceHandlingREST
         return sw.toString();
     }
 
+    /**
+     * Method invoked to get collection of Advertisement objects related to specified invoice.
+     *
+     * @param id - identifier of specific invoice
+     * @return collection of Advertisement objects
+     */
     @GET
     @Path("/ads")
     public String getAdsForInvoice(@QueryParam("ID") int id)

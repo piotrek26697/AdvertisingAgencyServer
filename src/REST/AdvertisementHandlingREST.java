@@ -2,17 +2,16 @@ package REST;
 
 import EnterpriseJavaBeans.AdvertisementHandlingEJB;
 import EnterpriseJavaBeans.BillboardOccupationHandlingEJB;
-import collections.Invoices;
 import entities.Advertisement;
-import entities.Invoice;
 
 import javax.ejb.EJB;
 import javax.ws.rs.*;
 import javax.xml.bind.JAXB;
 import java.io.InputStream;
-import java.io.StringWriter;
-import java.util.List;
 
+/**
+ * Class which handles requests for Advertisement class instances.
+ */
 @Path("/advertisement")
 public class AdvertisementHandlingREST
 {
@@ -31,6 +30,12 @@ public class AdvertisementHandlingREST
         List<Advertisement>
     }*/
 
+    /**
+     * Method used to delete Advertisement record in database if there is no display history.
+     *
+     * @param id - identification of the Advertisement to remove, provided by Client application
+     * @return status whether the operation succeed or not
+     */
     @DELETE
     public String deleteAdvertisement(@QueryParam("advertisementID") int id)
     {
@@ -42,6 +47,11 @@ public class AdvertisementHandlingREST
             return "-1";
     }
 
+    /**
+     * Method invoked to create a new record in database based on Advertisement class.
+     *
+     * @param in - object to be inserted into database represented as InputStream
+     */
     @POST
     public void createAdvertisement(InputStream in)
     {
@@ -49,6 +59,11 @@ public class AdvertisementHandlingREST
         advertisementBean.create(ad);
     }
 
+    /**
+     * Method invoked to update already existing record in database.
+     *
+     * @param in - object with updated fields represented as InputStream
+     */
     @PUT
     public void updateAdvertisement(InputStream in)
     {
@@ -56,7 +71,7 @@ public class AdvertisementHandlingREST
         advertisementBean.update(ad);
     }
 
-    @GET
+   /* @GET
     @Path("/invoiceList")
     public String getInvoiceList(@QueryParam("advertisementID") int advertisementID)
     {
@@ -66,7 +81,7 @@ public class AdvertisementHandlingREST
         invoices.setInvoiceList(list);
         JAXB.marshal(invoices, stringWriter);
         return stringWriter.toString();
-    }
+    }*/
 
     /*@GET
     @Path("/client")

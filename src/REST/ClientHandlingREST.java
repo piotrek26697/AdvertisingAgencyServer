@@ -4,10 +4,8 @@ import EnterpriseJavaBeans.AdvertisementHandlingEJB;
 import EnterpriseJavaBeans.ClientHandlingEJB;
 import collections.Advertisements;
 import collections.Clients;
-import collections.Invoices;
 import entities.Advertisement;
 import entities.Client;
-import entities.Invoice;
 
 import javax.ejb.EJB;
 import javax.ws.rs.*;
@@ -16,6 +14,9 @@ import java.io.InputStream;
 import java.io.StringWriter;
 import java.util.List;
 
+/**
+ * Class which handles requests for Client class instances.
+ */
 @Path("/client")
 public class ClientHandlingREST
 {
@@ -32,6 +33,14 @@ public class ClientHandlingREST
         clientBean.create(client);
     }
 
+    /**
+     * Method invoked to get collection of Client class instances from database.
+     *
+     * @param name     - filtering parameter
+     * @param lastName - filtering parameter
+     * @param address  - filtering parameter
+     * @return collection of Client class instances
+     */
     @GET
     public String getClients(@QueryParam("name") String name,
                              @QueryParam("lastName") String lastName,
@@ -46,6 +55,12 @@ public class ClientHandlingREST
         return writer.toString();
     }
 
+    /**
+     * Method invoked to get collection of Advertisement class instances for specified Client entity.
+     *
+     * @param id - Client entity identifier
+     * @return collection of Advertisement class instances
+     */
     @GET
     @Path("/advertisementList")
     public String getAdvertisementList(@QueryParam("clientID") int id)
@@ -58,7 +73,8 @@ public class ClientHandlingREST
         return writer.toString();
     }
 
-    @GET
+
+    /*@GET
     @Path("/invoiceList")
     public String getIncoiveList(@QueryParam("clientID") int id)
     {
@@ -73,7 +89,7 @@ public class ClientHandlingREST
         invoices.setInvoiceList(invoiceList);
         JAXB.marshal(invoices, sw);
         return sw.toString();
-    }
+    }*/
 
     /*@PUT
     @Path("/advertisementAdd")
@@ -87,6 +103,12 @@ public class ClientHandlingREST
         clientBean.update(client);
     }*/
 
+    /**
+     * Method invoked to delete Client.
+     *
+     * @param id - record identifier
+     * @return status whether the removal succeed or not
+     */
     @DELETE
     public String deleteClient(@QueryParam("id") int id)
     {
@@ -101,6 +123,11 @@ public class ClientHandlingREST
         }
     }
 
+    /**
+     * Method invoked to update existing record of Client in database.
+     *
+     * @param inputStream - Object with updated fields represented as InputStream
+     */
     @PUT
     public void updateClient(InputStream inputStream)
     {

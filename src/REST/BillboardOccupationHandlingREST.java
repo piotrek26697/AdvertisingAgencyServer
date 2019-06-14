@@ -14,12 +14,20 @@ import java.io.InputStream;
 import java.io.StringWriter;
 import java.util.List;
 
+/**
+ * Class which handles requests for BillboardOccupation class instances.
+ */
 @Path("/billboardOccupation")
 public class BillboardOccupationHandlingREST
 {
     @EJB
     private BillboardOccupationHandlingEJB billboardOccupationBean;
 
+    /**
+     * Method invoked to create new record in database based on BillboardOccupation class.
+     *
+     * @param in - BillboardOccupation instance represented as InputStream
+     */
     @POST
     public void createBillboardOccupation(InputStream in)
     {
@@ -27,6 +35,14 @@ public class BillboardOccupationHandlingREST
         billboardOccupationBean.create(billboardOccupation);
     }
 
+    /**
+     * Method invoked to download collection of BillboardOccupation class instances from database.
+     *
+     * @param id            - billboard or advertisement identifier
+     * @param type          - specifies the class that parameter id belongs to
+     * @param enableHistory - allows to skip records which dates before current date
+     * @return collection of BillboardOccupation class instances
+     */
     @GET
     public String getBillboardOccupationListFor(@QueryParam("ID") int id,
                                                 @QueryParam("type") String type,

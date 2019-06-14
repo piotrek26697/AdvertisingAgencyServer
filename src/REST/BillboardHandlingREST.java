@@ -1,9 +1,7 @@
 package REST;
 
 import EnterpriseJavaBeans.BillboardHandlingEJB;
-import collections.Advertisements;
 import collections.Billboards;
-import entities.Advertisement;
 import entities.Billboard;
 
 import javax.ejb.EJB;
@@ -16,12 +14,20 @@ import java.io.InputStream;
 import java.io.StringWriter;
 import java.util.List;
 
+/**
+ * Class which handles requests for Billboard class instances.
+ */
 @Path("/billboard")
 public class BillboardHandlingREST
 {
     @EJB
     private BillboardHandlingEJB billboardBean;
 
+    /**
+     * Method invoked to create new record in database based on Billboard class.
+     *
+     * @param in - billboard class instance represented as InputStream
+     */
     @POST
     public void createBillboard(InputStream in)
     {
@@ -29,6 +35,13 @@ public class BillboardHandlingREST
         billboardBean.create(billboard);
     }
 
+    /**
+     * Method invoked to download records from "Billboards" table.
+     *
+     * @param address - filtering parameter
+     * @param size    - filtering parameter
+     * @return collection of Billboard instances
+     */
     @GET
     public String getBillboardList(@QueryParam("address") String address, @QueryParam("size") String size)
     {
@@ -43,7 +56,7 @@ public class BillboardHandlingREST
         return sw.toString();
     }
 
-    @GET
+    /*@GET
     @Path("/advertisementList")
     public String getAdvertisementList(@QueryParam("billboardID") int billboardID)
     {
@@ -53,5 +66,5 @@ public class BillboardHandlingREST
         StringWriter sw = new StringWriter();
         JAXB.marshal(ads, sw);
         return sw.toString();
-    }
+    }*/
 }
