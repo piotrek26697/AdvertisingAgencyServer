@@ -26,6 +26,11 @@ public class ClientHandlingREST
     @EJB
     private AdvertisementHandlingEJB advertisementEJB;
 
+    /**
+     * Method invoked to create a new record in database based on Client class.
+     *
+     * @param inputStream - Client class instance represented as InputStream
+     */
     @POST
     public void createClient(InputStream inputStream)
     {

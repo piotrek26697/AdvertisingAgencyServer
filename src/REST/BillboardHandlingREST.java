@@ -24,9 +24,9 @@ public class BillboardHandlingREST
     private BillboardHandlingEJB billboardBean;
 
     /**
-     * Method invoked to create new record in database based on Billboard class.
+     * Method invoked to create a new record in database based on Billboard class.
      *
-     * @param in - billboard class instance represented as InputStream
+     * @param in - Billboard class instance represented as InputStream
      */
     @POST
     public void createBillboard(InputStream in)
