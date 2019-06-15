@@ -29,7 +29,7 @@ public class ClientHandlingREST
     /**
      * Method invoked to create a new record in database based on Client class.
      *
-     * @param inputStream - Client class instance represented as InputStream
+     * @param inputStream Client class instance represented as InputStream
      */
     @POST
     public void createClient(InputStream inputStream)
@@ -41,9 +41,9 @@ public class ClientHandlingREST
     /**
      * Method invoked to get collection of Client class instances from database.
      *
-     * @param name     - filtering parameter
-     * @param lastName - filtering parameter
-     * @param address  - filtering parameter
+     * @param name filtering parameter
+     * @param lastName filtering parameter
+     * @param address filtering parameter
      * @return collection of Client class instances
      */
     @GET
@@ -63,7 +63,7 @@ public class ClientHandlingREST
     /**
      * Method invoked to get collection of Advertisement class instances for specified Client entity.
      *
-     * @param id - Client entity identifier
+     * @param id Client entity identifier
      * @return collection of Advertisement class instances
      */
     @GET
@@ -111,7 +111,7 @@ public class ClientHandlingREST
     /**
      * Method invoked to delete Client.
      *
-     * @param id - record identifier
+     * @param id record identifier
      * @return status whether the removal succeed or not
      */
     @DELETE
@@ -131,7 +131,7 @@ public class ClientHandlingREST
     /**
      * Method invoked to update existing record of Client in database.
      *
-     * @param inputStream - Object with updated fields represented as InputStream
+     * @param inputStream Object with updated fields represented as InputStream
      */
     @PUT
     public void updateClient(InputStream inputStream)

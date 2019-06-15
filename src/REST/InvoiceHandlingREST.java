@@ -33,7 +33,7 @@ public class InvoiceHandlingREST
     /**
      * Method invoked to create a new record in database based on Invoice class.
      *
-     * @param inputStream - object to be inserted into database represented as InputStream
+     * @param inputStream object to be inserted into database represented as InputStream
      */
     @POST
     public void createInvoice(InputStream inputStream)
@@ -63,7 +63,7 @@ public class InvoiceHandlingREST
      * Method invoked to get the collection of Invoice class instances from database.
      * Collection corresponds with one client record.
      *
-     * @param id - client's record identifier
+     * @param id client's record identifier
      * @return collection of Invoice class instances
      */
     @GET
@@ -80,7 +80,7 @@ public class InvoiceHandlingREST
     /**
      * Method invoked to get collection of Advertisement objects related to specified invoice.
      *
-     * @param id - identifier of specific invoice
+     * @param id identifier of specific invoice
      * @return collection of Advertisement objects
      */
     @GET

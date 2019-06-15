@@ -26,7 +26,7 @@ public class BillboardHandlingREST
     /**
      * Method invoked to create a new record in database based on Billboard class.
      *
-     * @param in - Billboard class instance represented as InputStream
+     * @param in Billboard class instance represented as InputStream
      */
     @POST
     public void createBillboard(InputStream in)
@@ -38,8 +38,8 @@ public class BillboardHandlingREST
     /**
      * Method invoked to download records from "Billboards" table.
      *
-     * @param address - filtering parameter
-     * @param size    - filtering parameter
+     * @param address filtering parameter
+     * @param size filtering parameter
      * @return collection of Billboard instances
      */
     @GET

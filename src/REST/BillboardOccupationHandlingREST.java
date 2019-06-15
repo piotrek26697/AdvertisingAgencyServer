@@ -26,7 +26,7 @@ public class BillboardOccupationHandlingREST
     /**
      * Method invoked to create a new record in database based on BillboardOccupation class.
      *
-     * @param in - BillboardOccupation class instance represented as InputStream
+     * @param in BillboardOccupation class instance represented as InputStream
      */
     @POST
     public void createBillboardOccupation(InputStream in)
@@ -38,9 +38,9 @@ public class BillboardOccupationHandlingREST
     /**
      * Method invoked to download collection of BillboardOccupation class instances from database.
      *
-     * @param id            - billboard or advertisement identifier
-     * @param type          - specifies the class that parameter id belongs to
-     * @param enableHistory - allows to skip records which dates before current date
+     * @param id billboard or advertisement identifier
+     * @param type specifies the class that parameter id belongs to
+     * @param enableHistory allows to skip records which dates before current date
      * @return collection of BillboardOccupation class instances
      */
     @GET

@@ -33,7 +33,7 @@ public class AdvertisementHandlingREST
     /**
      * Method used to delete Advertisement record in database if there is no display history.
      *
-     * @param id - identification of the Advertisement to remove, provided by Client application
+     * @param id identification of the Advertisement to remove, provided by Client application
      * @return status whether the operation succeed or not
      */
     @DELETE
@@ -50,7 +50,7 @@ public class AdvertisementHandlingREST
     /**
      * Method invoked to create a new record in database based on Advertisement class.
      *
-     * @param in - object to be inserted into database represented as InputStream
+     * @param in object to be inserted into database represented as InputStream
      */
     @POST
     public void createAdvertisement(InputStream in)
@@ -62,7 +62,7 @@ public class AdvertisementHandlingREST
     /**
      * Method invoked to update already existing record in database.
      *
-     * @param in - object with updated fields represented as InputStream
+     * @param in object with updated fields represented as InputStream
      */
     @PUT
     public void updateAdvertisement(InputStream in)
